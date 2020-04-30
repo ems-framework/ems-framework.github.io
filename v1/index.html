@@ -2,51 +2,158 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
   *{
     box-sizing: border-box;
   }
+  body{
+    }
  @media only screen and (max-width: 480px){
 
   
   
   img{
     display: block;
-    width: 50%;  
-    height: 20%;
-    position: fixed;
-    top: 10%;
-    right: 25%;  
+    width: 20%;  
+    height: 50px;
+    position: absolute;
+    top: 1%;
+    float: left;  
+    margin-bottom: 10px;
     
   }
   .shadow{
-    
-    border-width: 6px;
+    display: block;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border-width: 0px;
     border-color:slateblue;
     border-radius: 10px;
-    position: fixed;
-    top: 37%;
+    position: absolute;
+    top: 120px;
     right: 10%;
     width: 80%;
-    padding: 3px;
+    
     background-color: steelblue;
     text-align: center;
-    height: 8%;
-    padding-top: 4.5%;
+    height: 50px;
+    padding-top: 13px;
+    font-size: 22px;
+    margin-bottom: 10px;
     
-    font-size: 5vw;
     text-decoration: none;
     
-    
+    box-shadow: black 0px 3px ;
     
 
 
   }
 #radio{
+  font-family: Georgia, 'Times New Roman', Times, serif;
   display: inline block;
   position: fixed;
-  top: 49%;
+  top: 200px;
   padding-left: 20%;
+  
+  
+  
+
+}
+.form__group1 {
+  position: fixed;
+  top: 260px;
+  left: 20%;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 60%;
+}
+.form__group2 {
+  position: fixed;
+  top: 320px;
+  left: 20%;
+  padding: 15px 0 0;
+  margin-top: 30px;
+  width: 60%;
+}
+.form__field {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid steelblue;
+  outline: 0;
+  font-size: 1.3rem;
+  color:steelblue;
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+.form__field::placeholder {
+  color: transparent;
+}
+.form__field:placeholder-shown ~ .form__label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #9b9b9b;
+}
+
+.form__field:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-color: steelblue;
+  border-image-slice: 1;
+}
+.form__field:focus ~ .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: steelblue;
+  font-weight: 700;
+}
+
+/* reset input */
+.form__field:required, .form__field:invalid {
+  box-shadow: none;
+}
+   
+.submit{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+    border: 0px;
+    border-radius: 10px;
+    position: fixed;
+    top: 450px;
+    right: 10%;
+    width: 80%;
+    
+    background-color: steelblue;
+    text-align: center;
+    height: 50px;
+    padding-top: 4px;
+    font-size: 22px;
+    margin-bottom: 10px;
+    
+    text-decoration: none;
+    box-shadow: black 0px 3px;
+    
+}
+p{
+  position: fixed;
+  top: 510px;
+  text-align: center;
+  left: 30%;
+  width: 40%;
+  color: steelblue;
 }
 
  }
@@ -57,20 +164,35 @@
 </head>
 <body>
 
-<div >
+<nav>
 <img src="flywheel.jpg" alt="just for sample">
 
-</div>
+</nav>
 <div class="shadow">
   <a>Select your College</a>
 </div>
 
 <div id="radio">
-  <input type="radio" id="Student" name="who" value="Student" > 
-  <label for="Student">Student</label>
+ <input type="radio" id="Student" name="who" value="Student" > 
+  <label for="Student" >Student
+    <span class="container"></span>
+  </label>
   <input type="radio" id="Professor" name="who" value="Professor" >
   <label for="Professor">Professor</label>
 </div>
+
+<div class="form__group1 field">
+  <input type="input" class="form__field" placeholder="User id" name="User id" id='name' required />
+  <label for="User id" class="form__label">User id</label>
+</div>
+<div class="form__group2 field">
+  <input type="number" class="form__field" placeholder="PIN" name="PIN" id='PIN' required />
+  <label for="PIN" class="form__label">PIN</label>
+</div>
+<div>
+  <input type="submit" value="login" class="submit">
+</div>
+<p>forgot PIN?</p>
 
 
 </body>
