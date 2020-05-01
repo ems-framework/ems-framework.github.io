@@ -1,0 +1,129 @@
+<meta name="theme-color" content="white">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" >
+<link href="../style.css" type="text/css" rel="stylesheet" media="screen,projection">
+<link rel='stylesheet' href='https://unpkg.com/material-components-web@v5.0.0/dist/material-components-web.min.css'>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<body>
+  <button id="selInstBtn" class="mdc-button mdc-button--outlined" style="margin-bottom: 28px;">
+    <div class="mdc-button__ripple"></div>
+    <div class="mdc-button__label">Select Institute</div>
+  </button>
+  <div class="mdc-form-field" style="margin-bottom: 24px;">
+    <div class="mdc-radio">
+      <input class="mdc-radio__native-control" type="radio" id="radio-1" name="radios" checked>
+      <div class="mdc-radio__background">
+        <div class="mdc-radio__outer-circle"></div>
+        <div class="mdc-radio__inner-circle"></div>
+      </div>
+    </div>
+    <label for="radio-1">Student</label>
+    <div class="mdc-radio">
+        <input class="mdc-radio__native-control" type="radio" id="radio-2" name="radios">
+        <div class="mdc-radio__background">
+          <div class="mdc-radio__outer-circle"></div>
+          <div class="mdc-radio__inner-circle"></div>
+        </div>
+      </div>
+      <label for="radio-2">Teacher</label>
+    </div>
+  </div>
+  
+  
+  <div class="mdc-text-field">
+  <input type="text" id="my-text-field" class="mdc-text-field__input first-name-input">
+  <label class="mdc-floating-label" for="my-text-field">UserID</label>
+  <div class="mdc-line-ripple"></div>
+  </div>
+  <div class="mdc-text-field">
+  <input type="number" maxlength="4" minlength="4" id="my-text-field" class="mdc-text-field__input last-name-input">
+  <label class="mdc-floating-label" for="my-text-field">PIN</label>
+  <div class="mdc-line-ripple"></div>
+  </div>
+  <button class="mdc-button mdc-button--raised greet-button" style="width: 150px;height: 50px;">
+  <div class="mdc-button__ripple"></div>
+  <div class="mdc-button__label" style="color:white">Login</div>
+  </button>
+  <div class="mdc-dialog" id="selection" data-mdc-auto-init="MDCDialog">
+    <div class="mdc-dialog__container">
+      <div class="mdc-dialog__surface"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="my-dialog-title"
+        aria-describedby="my-dialog-content">
+   <div class="mdc-dialog__title" style="padding-left: 0;display: block;padding: 14px;">
+    <span onclick="dialog.close()" style="vertical-align: middle;height: auto;width: auto;float: left;"><i class="material-icons" style="font-size: 30px;">close</i></span>
+    <span style="vertical-align: text-bottom;font-size: 24px;padding-left: 10px;position:absolute;">Select Institute</span>
+    <span style="vertical-align: middle;height: auto;width: auto;float: right;"><i class="material-icons" style="font-size: 30px;">search</i></span>
+   
+</div>
+        <div class="mdc-dialog__content">
+              
+            <ul id="my-list" class="mdc-list" role="listbox" style="top:auto">
+                <li class="mdc-list-item" role="option" tabindex="0">
+                  <span class="mdc-list-item__text">Sample - 1</span>
+                </li>
+                <li class="mdc-list-item" role="option">
+                  <span class="mdc-list-item__text">Sample - 2</span>
+                </li>
+                <li class="mdc-list-item" role="option">
+                  <span class="mdc-list-item__text">Sample - 3</span>
+                </li>
+              </ul>
+        </div>
+     
+      </div>
+    </div>
+    <div class="mdc-dialog__scrim"></div>
+  </div>
+  <div class="mdc-typography mdc-typography--overline greet-message"></div>
+  <script src='https://unpkg.com/material-components-web@v5.0.0/dist/material-components-web.min.js'></script>
+  <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+
+    <script>
+      mdc.autoInit();
+const buttons = document.querySelectorAll('.mdc-button');
+for (const button of buttons) {
+  mdc.ripple.MDCRipple.attachTo(button);
+}
+
+const textFields = document.querySelectorAll('.mdc-text-field');
+for (const textField of textFields) {
+  mdc.textField.MDCTextField.attachTo(textField);
+}
+
+const dia = document.getElementById("selection");
+const dialog = mdc.dialog.MDCDialog.attachTo(dia)
+
+const lis = document.getElementById('my-list');
+const list = mdc.list.MDCList.attachTo(lis)
+list.singleSelection = true;
+
+/** Custom javascript code. */
+const greetMessageEl = document.querySelector('.greet-message');
+const greetButton = document.querySelector('.greet-button');
+
+
+greetButton.addEventListener('click', () => {
+  const firstNameInput = document.querySelector('.first-name-input').value;
+  const lastNameInput = document.querySelector('.last-name-input').value;
+  const dialogq = document.querySelector('.mdc-dialog');
+
+  let name;
+  if (firstNameInput || lastNameInput) {
+    name = firstNameInput + ' ' + lastNameInput;
+  } else {
+    name = 'Anonymous';
+  }
+  greetMessageEl.textContent = `Hello, ${name}!`;
+});
+
+
+$("#selInstBtn").click(function(){
+    dialog.open();
+})
+$("#my-list").children("li").click(function(){
+    $("#selInstBtn").children(".mdc-button__label").html($(this).children("span").html());
+    dialog.close()
+})
+    </script>
+  </body>
