@@ -4,7 +4,7 @@
 <link rel='stylesheet' href='https://unpkg.com/material-components-web@v5.0.0/dist/material-components-web.min.css'>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <body>
-  <button id="selInstBtn" class="mdc-button mdc-button--outlined" style="margin-bottom: 28px;">
+  <button onclick="dialog.open();"  id="selInstBtn" class="mdc-button mdc-button--outlined" style="margin-bottom: 28px;">
     <div class="mdc-button__ripple"></div>
     <div class="mdc-button__label">Select Institute</div>
   </button>
@@ -118,9 +118,6 @@ greetButton.addEventListener('click', () => {
 });
 
 
-$("#selInstBtn").click(function(){
-    dialog.open();
-})
 $("#my-list").children("li").click(function(){
     $("#selInstBtn").children(".mdc-button__label").html($(this).children("span").html());
     dialog.close()
